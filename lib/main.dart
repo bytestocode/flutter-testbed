@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -15,12 +17,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TestBed extends StatelessWidget {
+class TestBed extends StatefulWidget {
   const TestBed({super.key});
 
   @override
+  State<TestBed> createState() => _TestBedState();
+}
+
+class _TestBedState extends State<TestBed> {
+  void _asyncFunction() async {
+    log('await 전'); // (1) 번째
+    await Future.delayed(const Duration(milliseconds: 300));
+    log('await 후'); // (3) 번째
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _asyncFunction();
+    log('비동기 함수보다 먼저 실행될까?'); // (2) 번째
+  }
+
+  @override
   Widget build(BuildContext context) {
-    /// margin, padding 차이점 탐구
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
