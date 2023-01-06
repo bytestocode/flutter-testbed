@@ -19,6 +19,10 @@ class MyApp extends ConsumerWidget {
   }
 
   Widget myApp() {
-    return const SafeArea(child: Scaffold(body: RiverpodBed()));
+    return const SafeArea(
+      child: Scaffold(
+        body: RiverpodBed(),
+      ),
+    );
   }
 }
