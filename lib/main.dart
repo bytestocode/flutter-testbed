@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'stackoverflow/setstatewidget.dart';
+import 'stackoverflow/setstatewidget2.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -22,7 +22,7 @@ class MyApp extends ConsumerWidget {
   Widget myApp() {
     return SafeArea(
       child: Scaffold(
-        body: MyHomePage(),
+        body: VideoDetail(),
       ),
     );
   }
