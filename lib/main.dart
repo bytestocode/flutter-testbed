@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'stackoverflow/setstatewidget2.dart';
+import 'stackoverflow/android_nav_height.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -22,7 +22,7 @@ class MyApp extends ConsumerWidget {
   Widget myApp() {
     return SafeArea(
       child: Scaffold(
-        body: VideoDetail(),
+        body: AndroidNavHeight(),
       ),
     );
   }
