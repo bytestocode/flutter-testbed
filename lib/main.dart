@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_testbed/stackoverflow/listview_bouncing.dart';
+import 'package:flutter_testbed/stackoverflow/background_color.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -21,7 +21,7 @@ class MyApp extends ConsumerWidget {
   Widget myApp() {
     return SafeArea(
       child: Scaffold(
-        body: ListviewBouncing(),
+        body: BackgroundColorWidget(),
       ),
     );
   }
