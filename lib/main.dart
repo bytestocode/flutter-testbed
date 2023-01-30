@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_testbed/ui/expanded_test.dart';
 
+import 'stackoverflow/scrollview_up.dart';
+
 void main() => runApp(
       const ProviderScope(
         child: MyApp(),
@@ -14,7 +16,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      home: myApp(),
+      home: MyScrollView(),
     );
   }
 
