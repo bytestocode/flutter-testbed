@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_testbed/ui/expanded_test.dart';
 
-import 'stackoverflow/scrollview_up.dart';
+import 'image/photo_manage_test.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -15,16 +14,21 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
-      home: MyScrollView(),
-    );
-  }
+    final testWidget = TodayPhotosPage();
+    const wrapWithSafeArea = true;
 
-  Widget myApp() {
-    return SafeArea(
-      child: Scaffold(
-        body: ExpandedTestWidget(),
-      ),
+    if (wrapWithSafeArea) {
+      return MaterialApp(
+        home: SafeArea(
+          child: Scaffold(
+            body: testWidget,
+          ),
+        ),
+      );
+    }
+
+    return MaterialApp(
+      home: testWidget,
     );
   }
 }
