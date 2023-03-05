@@ -116,11 +116,11 @@ class TodayPhotosPageState extends State<TodayPhotosPage> {
 
                   final double? lat =
                       (entity.latitude == null || entity.latitude == 0)
-                          ? latlng.latitude
+                          ? (latlng.latitude == 0 ? null : latlng.latitude)
                           : entity.latitude;
                   final double? lng =
                       (entity.longitude == null || entity.longitude == 0)
-                          ? latlng.longitude
+                          ? (latlng.longitude == 0 ? null : latlng.longitude)
                           : entity.longitude;
 
                   print('좌표 lat: $lat, lng: $lng');
@@ -236,7 +236,7 @@ class TodayPhotosPageState extends State<TodayPhotosPage> {
           sizeConstraint: SizeConstraint(ignoreSize: true),
         ),
         createTimeCond: DateTimeCond(
-          min: DateTime(2022, 9, 27),
+          min: DateTime(2023, 2, 27),
           max: DateTime(2023, 5, 31),
         ),
       ),
