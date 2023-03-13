@@ -5,16 +5,16 @@ class BoxUnderline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IntrinsicWidth(
+          child: Column(
             children: [
               // title
               Text(
-                '123123',
+                '123 asdf ',
                 // style: baseStyle,
               ),
 
@@ -22,7 +22,7 @@ class BoxUnderline extends StatelessWidget {
               Container(
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: Colors.yellow,
                   borderRadius: BorderRadius.circular(2),
                 ),
                 // hacky
@@ -33,8 +33,8 @@ class BoxUnderline extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
