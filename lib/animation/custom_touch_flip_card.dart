@@ -7,8 +7,8 @@ class CustomTouchFlipCard extends StatefulWidget {
   final double height;
   final double borderRadius;
   final BoxShadow? boxShadow;
-  final Widget front;
-  final Widget back;
+  final Widget frontWidget;
+  final Widget backWidget;
 
   const CustomTouchFlipCard({
     super.key,
@@ -16,8 +16,8 @@ class CustomTouchFlipCard extends StatefulWidget {
     required this.height,
     required this.borderRadius,
     this.boxShadow,
-    required this.front,
-    required this.back,
+    required this.frontWidget,
+    required this.backWidget,
   });
 
   @override
@@ -109,11 +109,11 @@ class _CustomTouchFlipCardState extends State<CustomTouchFlipCard>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   child: animation.value <= 0.5
-                      ? widget.front
+                      ? widget.frontWidget
                       : Transform(
                           alignment: Alignment.center,
                           transform: Matrix4.rotationY(pi),
-                          child: widget.back,
+                          child: widget.backWidget,
                         ),
                 ),
               ),

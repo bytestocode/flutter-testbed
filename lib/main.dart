@@ -31,11 +31,11 @@ class MyApp extends ConsumerWidget {
               blurRadius: 4,
               offset: const Offset(0, 4),
             ),
-            front: Image.asset(
+            frontWidget: Image.asset(
               'assets/front.jpeg',
               fit: BoxFit.cover,
             ),
-            back: Image.asset(
+            backWidget: Image.asset(
               'assets/back.jpeg',
               fit: BoxFit.cover,
             ),
@@ -57,11 +57,11 @@ class MyApp extends ConsumerWidget {
               blurRadius: 4,
               offset: const Offset(0, 4),
             ),
-            front: Image.asset(
+            frontWidget: Image.asset(
               'assets/front.jpeg',
               fit: BoxFit.cover,
             ),
-            back: Image.asset(
+            backWidget: Image.asset(
               'assets/back.jpeg',
               fit: BoxFit.cover,
             ),
