@@ -1,90 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_testbed/animation/flip_card_for_callback.dart';
 
-import 'animation/custom_drag_flip_card.dart';
-import 'animation/custom_touch_flip_card.dart';
+void main() => runApp(const MyApp());
 
-void main() => runApp(
-      ProviderScope(
-        child: MyApp(),
-      ),
-    );
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-class MyApp extends ConsumerWidget {
-  MyApp({super.key});
-
-  final controller = FlipCardController();
+  static const String _title = 'Flutter Code Sample';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final testWidget = Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomDragFlipCard(
-            width: 240,
-            height: 300,
-            borderRadius: 10,
-            boxShadow: BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 4,
-              offset: const Offset(0, 4),
-            ),
-            frontWidget: Image.asset(
-              'assets/front.jpeg',
-              fit: BoxFit.cover,
-            ),
-            backWidget: Image.asset(
-              'assets/back.jpeg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(height: 100.0),
-          // TextButton(
-          //   onPressed: () {
-          //     controller.flipCard();
-          //   },
-          //   child: Text('돌리기'),
-          // ),
-          // const SizedBox(height: 100.0),
-          CustomTouchFlipCard(
-            width: 240,
-            height: 300,
-            borderRadius: 10,
-            boxShadow: BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 4,
-              offset: const Offset(0, 4),
-            ),
-            frontWidget: Image.asset(
-              'assets/front.jpeg',
-              fit: BoxFit.cover,
-            ),
-            backWidget: Image.asset(
-              'assets/back.jpeg',
-              fit: BoxFit.cover,
-            ),
-          ),
-        ],
-      ),
-    );
-
-    const wrapWithSafeArea = false;
-
-    if (wrapWithSafeArea) {
-      return MaterialApp(
-        home: SafeArea(
-          child: Scaffold(
-            body: testWidget,
-          ),
-        ),
-      );
-    }
-
+  Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: testWidget,
+      title: _title,
+      home: TestScreen(),
+    );
+  }
+}
+
+class TestScreen extends StatelessWidget {
+  const TestScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Center(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 40,
+                  crossAxisSpacing: 2.5,
+                ),
+                scrollDirection: Axis.vertical,
+                itemCount: 19,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return const Text(
+                    '_',
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class CustomDragFlipCardWidget extends StatefulWidget {
+class TestCustomTouchDragFlipCardWidget extends StatefulWidget {
   final double width;
   final double height;
   final double borderRadius;
@@ -10,7 +10,7 @@ class CustomDragFlipCardWidget extends StatefulWidget {
   final Widget front;
   final Widget back;
 
-  const CustomDragFlipCardWidget({
+  const TestCustomTouchDragFlipCardWidget({
     super.key,
     required this.width,
     required this.height,
@@ -21,11 +21,12 @@ class CustomDragFlipCardWidget extends StatefulWidget {
   });
 
   @override
-  State<CustomDragFlipCardWidget> createState() =>
-      _CustomDragFlipCardWidgetState();
+  State<TestCustomTouchDragFlipCardWidget> createState() =>
+      _TestCustomTouchDragFlipCardWidgetState();
 }
 
-class _CustomDragFlipCardWidgetState extends State<CustomDragFlipCardWidget>
+class _TestCustomTouchDragFlipCardWidgetState
+    extends State<TestCustomTouchDragFlipCardWidget>
     with TickerProviderStateMixin {
   /// 터치 관련
   late final AnimationController _touchController;
@@ -68,7 +69,8 @@ class _CustomDragFlipCardWidgetState extends State<CustomDragFlipCardWidget>
   /// 드래그 관련
   bool _isDragStart = false;
   late final AnimationController dragController;
-  late Animation<double> dragAnimation;
+  late Animation dragAnimation;
+  late Animation<double> resetDragAnimation;
   bool isFront = true;
   bool isFrontStart = true;
   double dragPosition = 0;
@@ -108,10 +110,13 @@ class _CustomDragFlipCardWidgetState extends State<CustomDragFlipCardWidget>
     );
     dragController.addListener(() {
       setState(() {
-        dragPosition = dragAnimation.value;
+        dragPosition = resetDragAnimation.value;
         setImageSide();
       });
     });
+    dragAnimation = Tween(begin: 0.0, end: 360.0).animate(
+      dragController,
+    )..addListener(() => setState(() {}));
   }
 
   @override
@@ -144,13 +149,11 @@ class _CustomDragFlipCardWidgetState extends State<CustomDragFlipCardWidget>
                 ..rotateY(_isDragStart
                     ? angle
                     : _touchAnimation.value * pi * _reverseValue)
-                ..scale(_isDragStart
-                    ? dragPosition / 180 <= 90
-                        ? 1 + ((dragPosition / 180) * (0.4 / 90))
-                        : 1.4 - ((dragPosition / 180) * (0.4 / 90))
-                    : _touchAnimation.value <= 0.5
-                        ? 1 + (_touchAnimation.value * 0.4)
-                        : 1.4 - (_touchAnimation.value * 0.4))
+                ..scale(
+                  _touchAnimation.value <= 0.5
+                      ? 1.0 + (_touchAnimation.value * 0.4)
+                      : 1.4 - (_touchAnimation.value * 0.4),
+                )
                 ..translate(
                   0.0,
                   _touchAnimation.value <= 0.5
@@ -215,7 +218,7 @@ class _CustomDragFlipCardWidgetState extends State<CustomDragFlipCardWidget>
 
               final end =
                   isFront ? (dragPosition > 180.0 ? 360.0 : 0.0) : 180.0;
-              dragAnimation = Tween(begin: dragPosition, end: end).animate(
+              resetDragAnimation = Tween(begin: dragPosition, end: end).animate(
                 dragController,
               );
 
