@@ -37,6 +37,7 @@ dependencies:
   photo_manager: ^2.5.2
   flutter_riverpod: ^2.3.2
   riverpod_annotation: ^2.0.2
+  easy_localization: ^3.0.2
 
 dev_dependencies:
   flutter_test:
