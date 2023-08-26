@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_testbed/ui/custom_listview.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +14,38 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: TestScreen(),
+      home: Scaffold(
+        // body: Column(
+        //   children: [
+        //     CustomTableCalendar(),
+        //   ],
+        // ),
+        appBar: AppBar(
+          forceMaterialTransparency: true,
+          title: const Text('Instagram'),
+          leading: IconButton(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            onPressed: () {},
+            icon: const Icon(
+              Icons.camera_alt_outlined,
+              color: Colors.red,
+            ),
+          ),
+          actions: [
+            IconButton(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              onPressed: () {},
+              icon: const Icon(Icons.email_outlined),
+            ),
+          ],
+        ),
+        body: ListView(
+          children: <Widget>[
+            UserStory(),
+            UserPost(),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -36,6 +68,49 @@ class TestScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Container(
+                height: 300,
+                child: ListView(
+                  children: [
+                    IntrinsicHeight(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              color: Colors.greenAccent,
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 20,
+                                  horizontal: 12,
+                                ),
+                                child: Text('test@example.com'),
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.grey,
+                              minimumSize: const Size(0, 0),
+                              // padding: const EdgeInsets.all(10),
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            onPressed: () {},
+                            child: Container(
+                              height: double.infinity,
+                              child: Icon(Icons.logout),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
               Center(
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
