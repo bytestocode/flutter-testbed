@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_testbed/riverpod/riverpod_bed_sub.dart';
+
+import 'riverpod_bed_sub.dart';
 
 class RiverpodBed extends ConsumerWidget {
   const RiverpodBed({Key? key}) : super(key: key);
