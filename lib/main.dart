@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'uxui/improved_asset_image.dart';
+import 'uxui/nested_scroll_view_example.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Testbed',
       debugShowCheckedModeBanner: false,
-      home: ImprovedAssetImage(),
+      home: NestedScrollViewExample(),
     );
   }
 }
